@@ -294,15 +294,15 @@ export default function Detail() {
                   Bank
                   Account
                   Name
-                  <input
-                    type="text"
-                    className="form-control rounded-pill text-lg"
-                    id="bankAccount"
-                    name="bankAccount"
-                    aria-describedby="bankAccount"
-                    placeholder="Enter your Bank Account Name"
-                  />
                 </label>
+                <input
+                  type="text"
+                  className="form-control rounded-pill text-lg"
+                  id="bankAccount"
+                  name="bankAccount"
+                  aria-describedby="bankAccount"
+                  placeholder="Enter your Bank Account Name"
+                />
               </div>
               <div className="d-sm-block d-flex flex-column w-100">
                 <a

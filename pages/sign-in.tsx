@@ -47,15 +47,15 @@ export default function SignIn() {
                 <label htmlFor="email" className="form-label text-lg fw-medium color-palette-1 mb-10">
                   Email
                   Address
-                  <input
-                    type="email"
-                    className="form-control rounded-pill text-lg"
-                    id="email"
-                    name="email"
-                    aria-describedby="email"
-                    placeholder="Enter your email address"
-                  />
                 </label>
+                <input
+                  type="email"
+                  className="form-control rounded-pill text-lg"
+                  id="email"
+                  name="email"
+                  aria-describedby="email"
+                  placeholder="Enter your email address"
+                />
               </div>
               <div className="pt-30">
                 <label
@@ -63,15 +63,15 @@ export default function SignIn() {
                   className="form-label text-lg fw-medium color-palette-1 mb-10"
                 >
                   Password
-                  <input
-                    type="password"
-                    className="form-control rounded-pill text-lg"
-                    id="password"
-                    name="password"
-                    aria-describedby="password"
-                    placeholder="Your password"
-                  />
                 </label>
+                <input
+                  type="password"
+                  className="form-control rounded-pill text-lg"
+                  id="password"
+                  name="password"
+                  aria-describedby="password"
+                  placeholder="Your password"
+                />
               </div>
               <div className="button-group d-flex flex-column mx-auto pt-50">
                 <a
@@ -83,7 +83,7 @@ export default function SignIn() {
                 </a>
                 <a
                   className="btn btn-sign-up fw-medium text-lg color-palette-1 rounded-pill"
-                  href="../src/sign-up.html"
+                  href="/sign-up"
                   role="button"
                 >
                   Sign
