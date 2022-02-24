@@ -9,13 +9,13 @@ export default function Sidebar() {
       <div className="content pt-50 pb-30 ps-30">
         <SidebarProfile />
         <div className="menus">
-          <SidebarMenuItem title="Overview" />
-          <SidebarMenuItem title="Transactions" />
-          <SidebarMenuItem title="Messages" />
-          <SidebarMenuItem title="Cards" />
-          <SidebarMenuItem title="Rewards" />
-          <SidebarMenuItem title="Settings" />
-          <SidebarMenuItem title="Log Out" />
+          <SidebarMenuItem title="Overview" icon="icon-menu-overview" active />
+          <SidebarMenuItem title="Transactions" icon="icon-menu-transactions" />
+          <SidebarMenuItem title="Messages" icon="icon-menu-message" />
+          <SidebarMenuItem title="Cards" icon="icon-menu-cards" />
+          <SidebarMenuItem title="Rewards" icon="icon-menu-rewards" />
+          <SidebarMenuItem title="Settings" icon="icon-menu-settings" />
+          <SidebarMenuItem title="Log Out" icon="icon-menu-logout" />
         </div>
         <SidebarFooter />
       </div>

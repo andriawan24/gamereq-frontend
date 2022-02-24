@@ -8,6 +8,5 @@ export default function MemberIndex() {
       <Sidebar />
       <OverviewContent />
     </section>
-
   );
 }
