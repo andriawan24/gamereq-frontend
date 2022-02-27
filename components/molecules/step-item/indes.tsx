@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface StepItemProps {
+export interface StepItemProps {
     icon: 'step-one' | 'step-two' | 'step-three'
     title: String;
     desc1: String;
