@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 export interface GameItemProps {
-    title: String;
-    category: String;
-    thumbnail: '/img/Thumbnail-1.png' | '/img/Thumbnail-2.png' | '/img/Thumbnail-3.png' | '/img/Thumbnail-4.png' | '/img/Thumbnail-5.png';
+    title: string;
+    category: string;
+    thumbnail: string;
 }
 export default function GameItem(props: GameItemProps) {
   const { title, category, thumbnail } = props;
