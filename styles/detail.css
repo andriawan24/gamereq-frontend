@@ -6,10 +6,10 @@
 }
 
 .detail hr{
-        margin: 0;    
-        background-color:#E7EAF5;
-        border: 0;
-        opacity: 1;
+    margin: 0;    
+    background-color:#E7EAF5;
+    border: 0;
+    opacity: 1;
 }
 
 .detail input[type="text"]{
@@ -50,6 +50,6 @@
 }
 
 .detail .btn-submit{    
-        background-color: #4D17E2;
-        padding: 0.75rem 3rem;
+    background-color: #4D17E2;
+    padding: 0.75rem 3rem;
 }
