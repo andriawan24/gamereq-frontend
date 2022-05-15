@@ -12,6 +12,7 @@ export default function MainBanner() {
             </p>
             <h1 className="header-title color-palette-1 fw-bold">
               Topup & Get
+              {' '}
               <span className="d-sm-inline d-none">a</span>
               <span className="d-sm-none d-inline">
                 a

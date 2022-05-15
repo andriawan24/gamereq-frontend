@@ -49,3 +49,8 @@ export interface DetailTypes {
     user: UserTypes,
     nominals: NominalTypes[]
 }
+
+export interface LoginFormType {
+    email: string,
+    password: string
+}

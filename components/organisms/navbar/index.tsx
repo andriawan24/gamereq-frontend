@@ -20,7 +20,7 @@ export default function Navbar() {
               <NavbarMenu title="Reward" />
               <NavbarMenu title="Discover" />
               <NavbarMenu title="Global Friends" />
-              <NavbarAuth isLogin />
+              <NavbarAuth />
             </ul>
           </div>
         </div>
