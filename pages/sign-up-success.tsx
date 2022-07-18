@@ -201,7 +201,6 @@ export default function SignUpSuccess() {
           >
             Top
             Up
-
           </a>
         </div>
       </div>

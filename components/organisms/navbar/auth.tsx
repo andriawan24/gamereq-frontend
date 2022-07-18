@@ -1,11 +1,40 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import { Player, TokenResult } from '../../../services/data-types';
 
-interface AuthProps {
-    isLogin?: Boolean;
-}
-export default function NavbarAuth(props: Partial<AuthProps>) {
-  const { isLogin } = props;
+export default function NavbarAuth() {
+  const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter();
+  const [user, setUser] = useState<Player>({
+    name: '',
+    id: '',
+    phoneNumber: '',
+    avatar: '',
+    username: '',
+  });
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    if (token) {
+      const jwtToken = Buffer.from(token ?? '', 'base64').toString();
+      const payload: TokenResult = jwtDecode(jwtToken);
+      setUser(payload.player);
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
+
+  const onLogout = () => {
+    Cookies.remove('token');
+    router.push('/');
+    setIsLogin(false);
+  };
 
   if (isLogin) {
     return (
@@ -21,7 +50,7 @@ export default function NavbarAuth(props: Partial<AuthProps>) {
             aria-expanded="false"
           >
             <img
-              src="/img/avatar-1.png"
+              src={`${process.env.NEXT_PUBLIC_IMAGE}/${user.avatar}`}
               className="rounded-circle"
               width="40"
               height="40"
@@ -37,10 +66,8 @@ export default function NavbarAuth(props: Partial<AuthProps>) {
                 <a className="dropdown-item text-lg color-palette-2">Account Settings</a>
               </Link>
             </li>
-            <li>
-              <Link href="/sign-in">
-                <a className="dropdown-item text-lg color-palette-2">Log Out</a>
-              </Link>
+            <li onClick={onLogout}>
+              <a className="dropdown-item text-lg color-palette-2">Log Out</a>
             </li>
           </ul>
         </div>

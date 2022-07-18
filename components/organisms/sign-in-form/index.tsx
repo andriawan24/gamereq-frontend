@@ -3,12 +3,14 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 import { setLogin } from '../../../services/auth';
 
 export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const onSubmit = async () => {
     setIsLoading(true);
@@ -26,7 +28,10 @@ export default function SignInForm() {
         toast.error(response.message);
       } else {
         toast.success(response.message);
-        useRouter().push('/');
+        const { token } = response.data;
+        const tokenBase64 = Buffer.from(token).toString('base64');
+        Cookies.set('token', tokenBase64, { expires: 1 });
+        router.push('/');
       }
     }
 

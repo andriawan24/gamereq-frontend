@@ -1,10 +1,18 @@
 import Image from 'next/image';
 import React from 'react';
+import jwtDecode from 'jwt-decode';
+import { GetServerSideProps } from 'next';
 import CheckoutConfirmation from '../components/organisms/checkout-confirmation';
 import CheckoutDetail from '../components/organisms/checkout-detail';
 import CheckoutItem from '../components/organisms/checkout-item';
+import { Player, TokenResult } from '../services/data-types';
 
-export default function Checkout() {
+interface CheckkoutProps {
+  user: Player
+}
+export default function Checkout(props: CheckkoutProps) {
+  const { user } = props;
+  console.log(user);
   return (
     <section className="checkout mx-auto pt-md-100 pb-md-145 pt-30 pb-30">
       <div className="container-fluid">
@@ -25,3 +33,24 @@ export default function Checkout() {
     </section>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token } = context.req.cookies;
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/sign-in',
+        permanent: false,
+      },
+    };
+  }
+  const jwtToken = Buffer.from(token ?? '', 'base64').toString();
+  const payload: TokenResult = jwtDecode(jwtToken);
+  const user = payload.player;
+  user.avatar = `${process.env.NEXT_PUBLIC_IMAGE}/${user.avatar}`;
+  return {
+    props: {
+      user,
+    },
+  };
+};

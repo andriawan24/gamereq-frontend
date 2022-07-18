@@ -54,3 +54,16 @@ export interface LoginFormType {
     email: string,
     password: string
 }
+
+export interface Player {
+    avatar: string,
+    id: string,
+    name: string,
+    phoneNumber: string,
+    username: string
+  }
+
+export interface TokenResult {
+    iat: string,
+    player: Player
+}

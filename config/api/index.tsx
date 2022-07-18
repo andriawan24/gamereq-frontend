@@ -17,10 +17,12 @@ export default async function callAPI({ url, method, data }: AxiosRequestConfig)
     };
     return res;
   }
+
   const res = {
     error: false,
     message: 'success',
     data: axiosResponse.data,
   };
+
   return res;
 }
