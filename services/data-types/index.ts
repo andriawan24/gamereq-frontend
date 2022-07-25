@@ -67,3 +67,12 @@ export interface TokenResult {
     iat: string,
     player: Player
 }
+
+export interface CheckoutTypes {
+    voucher: string,
+    nominal: string,
+    payment: string,
+    bank: string,
+    name: string,
+    accountNumber: string
+}
