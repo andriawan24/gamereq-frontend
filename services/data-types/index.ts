@@ -60,7 +60,8 @@ export interface Player {
     id: string,
     name: string,
     phoneNumber: string,
-    username: string
+    username: string,
+    email: string,
   }
 
 export interface TokenResult {

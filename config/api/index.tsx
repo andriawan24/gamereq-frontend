@@ -39,7 +39,7 @@ export default async function callAPI({
   const res = {
     error: false,
     message: 'success',
-    data: axiosResponse.data,
+    data: axiosResponse.count ? axiosResponse : axiosResponse.data,
   };
 
   return res;

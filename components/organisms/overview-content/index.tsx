@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { getMemberOverview } from '../../../services/player';
 import OverviewContentCategory from './category';
 import OverviewContentTableRow from './table-row';
 
 export default function OverviewContent() {
+  const [count, setCount] = useState([]);
+  const [data, setData] = useState([]);
+
+  const getMemberOverviewAPI = async () => {
+    const response = await getMemberOverview();
+    if (response.error) {
+      toast.error(response.message);
+    } else {
+      setCount(response.data.count);
+      setData(response.data.data);
+    }
+  };
+
+  useEffect(() => {
+    getMemberOverviewAPI();
+  }, []);
+
   return (
     <main className="main-wrapper">
       <div className="ps-lg-0">
@@ -11,21 +30,15 @@ export default function OverviewContent() {
           <p className="text-lg fw-medium color-palette-1 mb-14">Top Up Categories</p>
           <div className="main-content">
             <div className="row">
-              <OverviewContentCategory icon="icon-desktop" nominal={18000500}>
-                Game
-                <br />
-                Desktop
-              </OverviewContentCategory>
-              <OverviewContentCategory icon="icon-mobile" nominal={8455000}>
-                Game
-                <br />
-                Mobile
-              </OverviewContentCategory>
-              <OverviewContentCategory icon="icon-desktop" nominal={5000000}>
-                Other
-                <br />
-                Categories
-              </OverviewContentCategory>
+              {count.map((c: any) => (
+                <OverviewContentCategory
+                  key={c._id}
+                  icon="icon-desktop"
+                  nominal={c.value}
+                >
+                  {c.name}
+                </OverviewContentCategory>
+              ))}
             </div>
           </div>
         </div>
@@ -42,38 +55,17 @@ export default function OverviewContent() {
                 </tr>
               </thead>
               <tbody>
-                <OverviewContentTableRow
-                  image="overview-1"
-                  title="Mobile Legends"
-                  category="Desktop"
-                  item={200}
-                  price={290000}
-                  status="Pending"
-                />
-                <OverviewContentTableRow
-                  image="overview-2"
-                  title="Call of Duty: Modern"
-                  category="Desktop"
-                  item={550}
-                  price={740000}
-                  status="Success"
-                />
-                <OverviewContentTableRow
-                  image="overview-3"
-                  title="Clash of Clans"
-                  category="Mobile"
-                  item={100}
-                  price={120000}
-                  status="Failed"
-                />
-                <OverviewContentTableRow
-                  image="overview-4"
-                  title="The Royal Games"
-                  category="Mobile"
-                  item={225}
-                  price={200000}
-                  status="Pending"
-                />
+                {data.map((d: any) => (
+                  <OverviewContentTableRow
+                    key={d._id}
+                    image={d.historyVoucherTopup.thumbnail}
+                    title={d.historyVoucherTopup.gameName}
+                    category={d.historyVoucherTopup.category}
+                    item={d.historyVoucherTopup.coinQuantity}
+                    price={d.historyVoucherTopup.price}
+                    status={d.status}
+                  />
+                ))}
               </tbody>
             </table>
           </div>

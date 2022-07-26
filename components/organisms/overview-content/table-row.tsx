@@ -7,25 +7,27 @@ interface OverviewContentTableRowProps {
     category: string;
     item: number;
     price: number;
-    status: 'Pending' | 'Success' | 'Failed';
+    status: 'pending' | 'success' | 'failed';
 }
 export default function OverviewContentTableRow(props: OverviewContentTableRowProps) {
   const {
     title, category, item, price, status, image,
   } = props;
 
+  const URL_IMAGE = process.env.NEXT_PUBLIC_IMAGE;
+
   const statusClass = cx({
     'float-start icon-status': true,
-    pending: status === 'Pending',
-    success: status === 'Success',
-    failed: status === 'Failed',
+    pending: status === 'pending',
+    success: status === 'success',
+    failed: status === 'failed',
   });
   return (
     <tr className="align-middle">
       <th scope="row">
         <img
           className="float-start me-3 mb-lg-0 mb-3"
-          src={`/img/${image}.png`}
+          src={`${URL_IMAGE}/${image}`}
           width={80}
           height={60}
           alt="Thumbnail"
@@ -51,7 +53,7 @@ export default function OverviewContentTableRow(props: OverviewContentTableRowPr
         <div>
           <span className={statusClass} />
           <p className="fw-medium text-start color-palette-1 m-0 position-relative">
-            {status}
+            {status.charAt(0).toUpperCase() + status.slice(1)}
           </p>
         </div>
       </td>
