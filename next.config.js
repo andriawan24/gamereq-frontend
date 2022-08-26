@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     domains: [
-      'gamereq.herokuapp.com',
+      'gamereq-server.herokuapp.com',
     ],
   },
 };

@@ -3,16 +3,17 @@ import React from 'react';
 import cx from 'classnames';
 
 interface TransactionContentTableRowProps {
-    image: string;
-    title: string;
-    category: string;
-    item: number;
-    price: number;
-    status: 'Pending' | 'Success' | 'Failed'
+  image: string;
+  title: string;
+  category: string;
+  item: string;
+  price: number;
+  status: string;
+  id: string;
 }
 export default function TransactionContentTableRow(props: TransactionContentTableRowProps) {
   const {
-    image, title, category, item, price, status,
+    image, title, category, item, price, status, id,
   } = props;
   const statusClass = cx({
     'float-start icon-status': true,
@@ -56,7 +57,7 @@ export default function TransactionContentTableRow(props: TransactionContentTabl
         </div>
       </td>
       <td>
-        <Link href="/member/transactions/detail">
+        <Link href={`/member/transactions/${id}`}>
           <a className="btn btn-status rounded-pill text-sm">
             Details
           </a>

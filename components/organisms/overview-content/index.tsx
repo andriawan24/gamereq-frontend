@@ -10,6 +10,7 @@ export default function OverviewContent() {
 
   const getMemberOverviewAPI = async () => {
     const response = await getMemberOverview();
+    console.log(response);
     if (response.error) {
       toast.error(response.message);
     } else {
