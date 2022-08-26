@@ -61,75 +61,73 @@ export default function SignUpPhoto() {
   return (
     <section className="sign-up-photo mx-auto pt-lg-200 pb-lg-227 pt-130 pb-50">
       <div className="container mx-auto">
-        <form action="">
-          <div className="form-input d-md-block d-flex flex-column">
-            <div>
-              <div className="mb-20">
-                <div className="image-upload text-center">
-                  <label htmlFor="avatar">
-                    {imagePreview ? <img src={imagePreview} className="img-upload" alt="" />
-                      : <Image src="/icon/upload-image.svg" width={120} height={120} alt="upload images" /> }
+        <div className="form-input d-md-block d-flex flex-column">
+          <div>
+            <div className="mb-20">
+              <div className="image-upload text-center">
+                <label htmlFor="avatar">
+                  {imagePreview ? <img src={imagePreview} className="img-upload" alt="" />
+                    : <Image src="/icon/upload-image.svg" width={120} height={120} alt="upload images" /> }
 
-                  </label>
-                  <input
-                    id="avatar"
-                    type="file"
-                    name="avatar"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                      const img = e.target.files != null ? e.target.files[0] : null;
-                      setImagePreview(URL.createObjectURL(img!));
-                      setImage(img);
-                    }}
-                  />
-                </div>
-              </div>
-              <h2 className="fw-bold text-xl text-center color-palette-1 m-0">{localForm.name}</h2>
-              <p className="text-lg text-center color-palette-1 m-0">{localForm.email}</p>
-              <div className="pt-50 pb-50">
-                <label htmlFor="category" className="form-label text-lg fw-medium color-palette-1 mb-10">
-                  Favorite Game
                 </label>
-                <select
-                  id="category"
-                  name="category"
-                  className="form-select d-block w-100 rounded-pill text-lg"
-                  aria-label="Favorite Game"
-                  value={favorite}
-                  onChange={(e) => setFavorite(e.target.value)}
-                >
-                  {categories.map((category: CategoryTypes) => (
-                    <option
-                      key={category._id}
-                      value={category._id}
-                      selected
-                    >
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  id="avatar"
+                  type="file"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                  onChange={(e) => {
+                    const img = e.target.files != null ? e.target.files[0] : null;
+                    setImagePreview(URL.createObjectURL(img!));
+                    setImage(img);
+                  }}
+                />
               </div>
             </div>
-
-            <div className="button-group d-flex flex-column mx-auto">
-              <button
-                className="btn btn-create fw-medium text-lg text-white rounded-pill mb-16"
-                type="button"
-                onClick={() => {
-                  onSubmit();
-                }}
+            <h2 className="fw-bold text-xl text-center color-palette-1 m-0">{localForm.name}</h2>
+            <p className="text-lg text-center color-palette-1 m-0">{localForm.email}</p>
+            <div className="pt-50 pb-50">
+              <label htmlFor="category" className="form-label text-lg fw-medium color-palette-1 mb-10">
+                Favorite Game
+              </label>
+              <select
+                id="category"
+                name="category"
+                className="form-select d-block w-100 rounded-pill text-lg"
+                aria-label="Favorite Game"
+                value={favorite}
+                onChange={(e) => setFavorite(e.target.value)}
               >
-                Create My Account
-              </button>
-              <a
-                className="btn btn-tnc text-lg color-palette-1 text-decoration-underline pt-15"
-                role="button"
-              >
-                Terms & Conditions
-              </a>
+                {categories.map((category: CategoryTypes) => (
+                  <option
+                    key={category._id}
+                    value={category._id}
+                    selected
+                  >
+                    {category.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-        </form>
+
+          <div className="button-group d-flex flex-column mx-auto">
+            <button
+              className="btn btn-create fw-medium text-lg text-white rounded-pill mb-16"
+              type="button"
+              onClick={() => {
+                onSubmit();
+              }}
+            >
+              Create My Account
+            </button>
+            <a
+              className="btn btn-tnc text-lg color-palette-1 text-decoration-underline pt-15"
+              role="button"
+            >
+              Terms & Conditions
+            </a>
+          </div>
+        </div>
       </div>
       <ToastContainer />
     </section>
